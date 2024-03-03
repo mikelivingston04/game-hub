@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import GameGrid from './components/GameGrid'
 import GenreList from './components/GenreList'
 import { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   //return (<Button colorScheme='blue'>Button</Button>);
@@ -26,6 +27,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area='main'>
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
