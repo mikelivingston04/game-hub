@@ -8,12 +8,20 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import ClearSelector from "./components/ClearSelector";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
+}
+
+const emptyGameQuery: GameQuery = {
+  genre: null,
+  platform: null,
+  sortOrder: '',
+  searchText: ''
 }
 
 function App() {
@@ -45,6 +53,7 @@ function App() {
               <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} />
             </Box>
             <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})}/>
+            <ClearSelector selectedGameQuery={emptyGameQuery} onSelectReset={() => setGameQuery(emptyGameQuery)} onSearch={() => setGameQuery({ ...emptyGameQuery})}/>
           </Flex>
         </Box>
         <GameGrid gameQuery={gameQuery}/>
